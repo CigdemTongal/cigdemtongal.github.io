@@ -7,7 +7,7 @@ date:   2016-09-04
 based in Istanbul, Turkey, focusing on facilitation, training, program management, and value-based impact assessment. B.A. in <a href="https://sosyoloji.gsu.edu.tr/en/" target="_blank">Sociology</a>, and M.A. in <a href="https://ects.gsu.edu.tr/en/program/index/50/" target="_blank">Strategic Communication Management</a>.
 
 <p style="line-height:3rem;">
-    <img src="slash.svg" style="vertical-align:middle;" /> Currently not open to work<br>
+    <img src="../../../slash.svg" style="vertical-align:middle;" /> Currently not open to work<br>
     <img src="briefcase.svg" style="vertical-align:middle;" /> Coordinator at <a href="https://www.tekfen.com.tr/en/tekfen-foundation" target=_blank>TEKFEN Foundation</a><br>
     <img src="download.svg" style="vertical-align:middle;" /> Download CV<br>
     <img src="mail.svg" style="vertical-align:middle;" /> Contact
