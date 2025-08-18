@@ -23,16 +23,20 @@
 
         <div class="container mx-auto px-2 mt-4 mb-2 clearfix header-text">
           
-          <h1 class="h0 inline-block header-title">{{ site.title }}</h1>
+          <h1 class="h0 inline-block header-title edu-nsw-act-cursive">{{ site.title }}</h1>
           <p class="h4 lh-condensed font-smoothing">{{ site.description }}</p>
           <div class="col-4 sm-width-full">
           <img src="avatar.png" />
           </div>
-          <div class="clearfix">
-            <p class="h4 lh-condensed font-smoothing">{{ site.description }}</p>
-            <div class="col-1 sm-width-full border-top-thick">
-            </div>
-          </div>
+          <style>
+            
+.edu-nsw-act-cursive-<uniquifier> {
+  font-family: "Edu NSW ACT Cursive", cursive;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+          </style>
 
         </div>
       </header>
