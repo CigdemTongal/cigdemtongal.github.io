@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Çiğdem Tongal
-description: Consultant focusing on facilitation, training, program management, value-Based impact assessment, and storytelling <br> ❌ Currently not open to work <br> 💼 Current position: Coordinator at TEKFEN Foundation <br>
+description: Consultant focusing on facilitation, training, program management, value-Based impact assessment, and storytelling <br> Currently not open to work <br> Current position: Coordinator at TEKFEN Foundation
 # baseurl: "/athena" # the subpath of your site, e.g. /blog
 url: "https://cigdemtongal.github.io/" # the base hostname & protocol for your site
 
