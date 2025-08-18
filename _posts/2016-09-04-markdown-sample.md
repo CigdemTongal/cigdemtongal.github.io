@@ -1,22 +1,10 @@
 ---
 layout: post
-title:  "Markdown sample"
+title:  "Corporate consultant"
 date:   2016-09-04
 ---
 
-### Markdown test document
-
-Text can be **bold**, _italic_, or ~~strikethrough~~. [Links](https://github.com) should be blue with no underlines (unless hovered over).
-
-There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.
-
-There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.
-
-> There should be no margin above this first sentence.
->
-> Blockquotes should be a lighter gray with a gray border along the left side.
->
-> There should be no margin below this final sentence.
+based in Istanbul, Turkey, focusing on facilitation, training, program management, and value-based impact assessment. B.A. in <a href="https://sosyoloji.gsu.edu.tr/en/" target="_blank">Sociology</a>, and M.A. in <a href="[http://example.com/](https://ects.gsu.edu.tr/en/program/index/50/)" target="_blank">Strategic Communication Management</a>.
 
 # Heading 1
 
