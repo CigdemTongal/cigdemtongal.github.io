@@ -4,7 +4,7 @@ title:  "Corporate consultant"
 date:   2016-09-04
 ---
 
-based in Istanbul, Turkey, focusing on facilitation, training, program management, and value-based impact assessment. B.A. in <a href="https://sosyoloji.gsu.edu.tr/en/" target="_blank">Sociology</a>, and M.A. in <a href="[http://example.com/](https://ects.gsu.edu.tr/en/program/index/50/)" target="_blank">Strategic Communication Management</a>.
+based in Istanbul, Turkey, focusing on facilitation, training, program management, and value-based impact assessment. B.A. in <a href="https://sosyoloji.gsu.edu.tr/en/" target="_blank">Sociology</a>, and M.A. in <a href="https://ects.gsu.edu.tr/en/program/index/50/" target="_blank">Strategic Communication Management</a>.
 
 # Heading 1
 
