@@ -5,6 +5,20 @@
 
   <body>
 
+     <style>
+          .grid{
+              display: grid;
+              grid-template-columns: 40% 60%;
+              grid-template-rows: 1fr;
+              column-gap: 20px;
+          }
+        @media screen and (max-width: 992px){
+         .grid{
+            grid-template-columns: 1fr;
+         }
+        }
+      </style>
+
     <div>
 
       <header class="clearfix">
@@ -23,31 +37,14 @@
             {% endfor %}
           </ul>
         </div>
-
-        <style>
-          .grid{
-              display: grid;
-              grid-template-columns: 40% 60%;
-              grid-template-rows: 1fr;
-              column-gap: 20px;
-          }
-        @media screen and (max-width: 992px){
-         .grid{
-            grid-template-columns: 1fr;
-         }
-        }
-      </style>
         
         <div class="container mx-auto px-2 mt-4 mb-2 clearfix header-text">
           <div class="col sm-width-full">
-            <h1 class="h0 inline-block pb-2 header-title">{{ site.title }}</h1>
-            
+            <h1 class="h0 inline-block pb-2 header-title">{{ site.title }}</h1>  
           <div class="grid">
-            
               <div class="grid-item" style>
               <img src="avatar_heavy.png" width="100%"/>
             </div>
-   
           <div class="grid-item">
             <div class="prose">
               <p style="line-height:3rem;">
@@ -60,14 +57,16 @@
           </div> 
         </div>
             </div>
+          </div>
       </header>
 
+     <!---
       <div class="container mx-auto px-2 py-2">
-        {% for post in site.posts %}
-          {% include post_block.html %}
-        {% endfor %}
+         {% for post in site.posts %}
+           {% include post_block.html %}
+         {% endfor %}
       </div>
-
+-    -->
     </div>
 
     {% include footer.html %}
