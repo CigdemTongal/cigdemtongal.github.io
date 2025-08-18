@@ -23,7 +23,7 @@ url: "https://cigdemtongal.github.io/" # the base hostname & protocol for your s
 social_link: Instagram
 social_username: cido
 
-theme: jekyll-athena
+theme: broccolini/athena
 
 # Set theme color here
 # Choose from: black (default), blue, gray, magenta, orange, red, white, and yellow.
