@@ -20,8 +20,8 @@ url: "https://cigdemtongal.github.io/" # the base hostname & protocol for your s
 
 # Optional social link, you can choose from the following options:
 # twitter (default), instagram, medium, or dribbble
-social_link: Instagram
-social_username: cido
+# social_link: Instagram
+# social_username: cido
 
 plugins:
   - jekyll-remote-theme
