@@ -1,3 +1,9 @@
+---
+layout: page
+title: Services
+permalink: /services/
+---
+
 # Services
 ### _How can we collaborate?_
 ![](https://cigdemtongal.github.io/services.png)
