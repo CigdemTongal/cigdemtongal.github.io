@@ -5,7 +5,7 @@ permalink: /services/
 ---
 
 ### _How can we collaborate?_
-![](https://cigdemtongal.github.io/services.png)
+
 >Every organization has inherent knowledge, creativity, and motivation within its people. But turning that into meaningful action and lasting change often needs the right framework. This is where I can help you unlock your organization’s collective intelligence.
 
 ### Facilitation & Training
