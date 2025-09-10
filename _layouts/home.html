@@ -25,7 +25,7 @@
           <h1 class="h0 inline-block py-2 mt-4 header-title">{{ site.title }}</h1>
 
           <div class="clearfix mb-4 py-1">
-            <p class="h4 lh-condensed font-smoothing">{{ site.description }}</p>
+            <!-- <p class="h4 lh-condensed font-smoothing">{{ site.description }}</p> -->
             <div class="col-1 sm-width-full border-top-thick">
             </div>
           </div>
@@ -36,7 +36,7 @@
       <div class="container mx-auto px-2 py-2">
 
 <div class="py-2 mb-2 prose">
-  <h2 class="h1 lh-condensed col-9 mb-0">
+  <h2 class="h1 lh-condensed col-9 mb-0" style="text-decoration:underline;">
     Organizational Consultant
   </h2><br>
   <p>I help organizations unlock their collective intelligence by designing participatory 
@@ -44,8 +44,10 @@
   <p>Based in Istanbul, I bring over 15+ years of experience across academia, civil society, 
     and consultancy. My work combines program design, facilitation, impact assessment, 
     and storytelling to help organizations create meaningful and lasting change.</p>
-  <p>Learn more about [my background](/about)  
-Explore how we can [collaborate](/services)</p>
+<p style="line-height:2.25rem;">
+      Learn more about <a href=" {{ site.baseurl }} /about" target="_blank">my background</a><br>
+      Explore how we can <a href=" {{ site.baseurl }} /services" target="_blank">collaborate</a>
+    </p>
 </div>
         
 </div>
