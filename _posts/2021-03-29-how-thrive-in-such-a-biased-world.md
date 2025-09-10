@@ -1,11 +1,9 @@
 ---
-tags: tag5, tag1, tag6
-categories: category3, category5
-image: bias.jpeg
+layout: category-post
+title:  "How to thrive in such a biased world?"
+date:   2021-03-29
+categories: writing
 ---
-# How to thrive in such a biased world?
-![Bias.jpeg](https://images.unsplash.com/photo-1547516508-4c1f9c7c4ec3?q=80&w=1180&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
-_Photo by Kara Eads on [Unsplash](https://images.unsplash.com/photo-1547516508-4c1f9c7c4ec3?q=80&w=1180&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)_
 
 Barnum Effect, Decision Fatigue, Gambler’s Fallacy … the list goes on and on. Countless psychological experiments explain the reasons why we cannot trust our reason solely. We have incredible inherent biases that most of us are blind to. Here is an exhaustive [list](https://thedecisionlab.com/biases/), which may or may not cause an “anxiety effect.”
 
@@ -67,3 +65,4 @@ Sometimes our experiences or thinking that we already know things because we hav
 Yet, it is also underrated when it comes to making your own decisions. Much like assumptions that have saved you from getting food poisoning or making sure that you get that degree, your experiences have allowed you to test and learn. Like a dessert on the menu, your experiences can make you leave the table with a nice taste or else hinder the whole meal just because you served a bad course at the end. **Do not underestimate your experience but also make sure that it is not your sole point of reference.**
 ***
 _This article was originally published as an insight on [Heart Mind Design](www.wearehmd.com)._
+
