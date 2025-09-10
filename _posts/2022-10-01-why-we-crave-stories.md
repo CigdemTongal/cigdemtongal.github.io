@@ -1,9 +1,10 @@
 ---
-tags: tag1, tag4, tag5
-categories: category5, category6
-image: story.webp
+layout: category-post
+title:  "Why do we crave stories?"
+date:   2022-10-01
+categories: writing
 ---
-# Why do we crave stories?
+
 ## And what does it mean for organizations?
 
 ![Story.webp](https://miro.medium.com/v2/resize:fit:1100/format:webp/0*Fkt-qfdnS9MIytv5)
@@ -51,6 +52,7 @@ Maybe the story is an alluring myth to capture the right talent (and strengthen 
 Whatever it may be, your story will give your organization the meaning it craves, the identity it needs, to identify its authentic role. Prof. David Boje, a prominent scholar on storytelling and organization, came up with the term ‘the storytelling organization’ which he defines as “collective storytelling system in which the performance of stories is a key part of members’ sense-making and a means to allow to supplement individual memories with institutional memory.”
 
 This is why stories are so attractive, especially in a time where all organizations are face to face with an identity crisis. We are all in search of meaning, and that meaning can be found through stories. As Umberto Eco beautifully put: “To survive, you must tell stories.”
+
 
 
 
