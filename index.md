@@ -1,5 +1,5 @@
 ---
-title: Deneme
+
 ---
 
 # Heading 1
