@@ -10,40 +10,171 @@
   <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
 
   <style>
-    /* ---------- Base typography ---------- 
+    /* ---------- Color palette ---------- */
+    :root {
+      --red: #ff3e41;
+      --orange: #ff8a43;
+      --yellow: #ffeb7f;
+      --mint: #00c9a7;
+      --blue: #007ea7;
+    }
+
+    /* ---------- Screen background ---------- */
     body {
       margin: 0;
-      background: #fff;
-      color: #111;
+      background: linear-gradient(
+        135deg,
+        var(--yellow),
+        var(--mint)
+      );
       font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.6;
+      color: #111;
     }
-    */
 
-    /* ---------- Paged container ---------- 
+    /* ---------- Page container ---------- */
     main {
-      max-width: 21cm;
-      margin: 2rem auto;
-      padding: 0;
+      width: 21cm;
+      margin: 3rem auto;
     }
-    */
 
-    /* ---------- Paged.js page rules ---------- 
+    /* ---------- Paged.js pages ---------- */
+    .pagedjs_page {
+      background: white;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      margin-bottom: 2rem;
+      border-radius: 4px;
+    }
+
+    /* ---------- Page rules ---------- */
     @page {
       size: A4;
       margin: 2.5cm;
     }
-    */
 
-    /* Optional: hide page boxes shadow */
- /*    .pagedjs_page { */
- /*     box-shadow: none;*/
+    /* ---------- Info button ---------- */
+    .info-btn {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      width: 44px;
+      height: 44px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+      z-index: 999;
+    }
+
+    .info-btn:hover {
+      background: var(--orange);
+    }
+
+    /* ---------- Info modal ---------- */
+    .info-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .info-content {
+      background: white;
+      max-width: 420px;
+      padding: 1.75rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      border-top: 6px solid var(--blue);
+    }
+
+    .info-content h2 {
+      margin-top: 0;
+      color: var(--blue);
+    }
+
+    .info-content p {
+      line-height: 1.6;
+    }
+
+    .info-content button {
+      margin-top: 1rem;
+      background: var(--mint);
+      color: #003;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    /* ---------- Print cleanup ---------- */
+    @media print {
+      body {
+        background: white;
+      }
+
+      .info-btn,
+      .info-modal {
+        display: none !important;
+      }
+
+      .pagedjs_page {
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+      }
+
+      main {
+        margin: 0;
+      }
     }
   </style>
 </head>
+
 <body>
+
+  <!-- Info button -->
+  <button class="info-btn" onclick="openInfo()">ℹ️</button>
+
+  <!-- Info modal -->
+  <div class="info-modal" id="infoModal">
+    <div class="info-content">
+      <h2>Best Print Results ✨</h2>
+      <p>
+        For perfect PDFs, use <strong>Google Chrome</strong>.
+      </p>
+      <p>
+        In the print dialog:
+        <br>• Paper size: <strong>A4</strong><br>
+        • Scale: <strong>100%</strong><br>
+        • Margins: <strong>None</strong><br>
+        • Background graphics: <strong>On</strong><br>
+        • Headers & footers: <strong>Off</strong>
+      </p>
+      <p>
+        Paged.js already did the hard work — don’t let the browser “help” 😉
+      </p>
+      <button onclick="closeInfo()">Got it</button>
+    </div>
+  </div>
+
   <main>
     {{ content }}
   </main>
+
+  <script>
+    function openInfo() {
+      document.getElementById("infoModal").style.display = "flex";
+    }
+    function closeInfo() {
+      document.getElementById("infoModal").style.display = "none";
+    }
+  </script>
+
 </body>
 </html>
