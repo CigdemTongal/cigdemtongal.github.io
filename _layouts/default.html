@@ -3,9 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>{{ page.title }}</title>
+
+  <!-- Paged.js -->
+  <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+
+  <style>
+    /* ---------- Base typography ---------- */
+    body {
+      margin: 0;
+      background: #fff;
+      color: #111;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+
+    /* ---------- Paged container ---------- */
+    main {
+      max-width: 21cm;     /* A4 width */
+      margin: 2rem auto;
+      padding: 0;
+    }
+
+    /* ---------- Paged.js page rules ---------- */
+    @page {
+      size: A4;
+      margin: 2.5cm;
+    }
+
+    /* Optional: hide page boxes shadow */
+ /*    .pagedjs_page { */
+ /*     box-shadow: none;*/
+    }
+  </style>
 </head>
 <body>
-  {{ content }}
+  <main>
+    {{ content }}
+  </main>
 </body>
 </html>
