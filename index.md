@@ -1,3 +1,7 @@
+---
+title: Deneme
+---
+
 # Heading 1
 
 [TOC]
