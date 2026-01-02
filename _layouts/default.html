@@ -2,65 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>{{ page.title }}</title>
 
-  <!-- Paged.js -->
+  <!-- Paged.js polyfill (automatically breaks content into pages) -->
   <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
 
   <style>
-    /* ======================================================
-       SCREEN BACKGROUND
-       ====================================================== */
-
+    /* ---------------------------------
+       SCREEN BACKGROUND (distinct)
+       --------------------------------- */
     body {
       margin: 0;
-      background: #6f6f6f; /* clearly distinct background */
+      padding: 2rem;
+      background: #00c9a7; /* you chose this color palette */
+      font-family: Georgia, serif;
     }
 
-    /* ======================================================
-       PAGED.JS PAGE PREVIEW (SCREEN)
-       ====================================================== */
-
+    /* ---------------------------------
+       PAGED.JS GENERATED PAGES
+       --------------------------------- */
     .pagedjs_page {
-      background: #ffffff;
-      margin: 2rem auto;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
-      border-radius: 3px;
+      background: white; /* actual "paper" */
+      margin: 1.75rem auto; /* vertical spacing */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      border-radius: 4px;
+      overflow: hidden;
     }
 
-    /* Ensure inner page box is white */
+    /* each pagebox inside must also be white */
     .pagedjs_pagebox {
       background: white;
     }
 
-    /* Optional: slightly soften the page edges */
-    .pagedjs_pagebox {
-      box-sizing: border-box;
-    }
-
-    /* ======================================================
-       PAGE SIZE & MARGINS (PAGED + PRINT)
-       ====================================================== */
-
+    /* ---------------------------------
+       PRINT SETTINGS (clean output)
+       --------------------------------- */
     @page {
       size: A4;
       margin: 2.5cm;
     }
 
-    /* ======================================================
-       PRINT CLEANUP (PDF OUTPUT)
-       ====================================================== */
-
     @media print {
       body {
-        background: white;
+        background: white !important;
+        padding: 0;
       }
-
       .pagedjs_page {
-        margin: 0;
         box-shadow: none;
+        margin: 0;
         border-radius: 0;
       }
     }
@@ -73,5 +64,3 @@
 
 </body>
 </html>
-
-
