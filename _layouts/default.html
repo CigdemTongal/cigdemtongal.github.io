@@ -24,38 +24,34 @@
 
       /* Force non-white viewport */
       html {
-        background: #e0e0e0 !important;
+        background: #e0e0e0;
       }
 
       body {
-        margin: 0 !important;
-        padding: 3rem 0 !important;
-        background: transparent !important;
+        margin: 0;
+        padding: 3rem 0;
+        background: transparent;
       }
 
       /* Center paged output */
       .pagedjs_pages {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 3rem !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
       }
 
       /* Ensure page box positioning */
       .pagedjs_pagebox {
-        position: relative !important;
-        background: white !important;
+        position: relative;
+        background: white;
       }
 
-      /*
-        Draw page border using overlay.
-        This CANNOT be overridden by Paged.js.
-      */
       .pagedjs_pagebox::after {
         content: "";
         position: absolute;
         inset: 0;
-        border: 3px solid #000;
+        border: 1px dashed #45d4ff;
         pointer-events: none;
         box-sizing: border-box;
       }
