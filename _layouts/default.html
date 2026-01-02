@@ -6,19 +6,17 @@
 
 <title>{{ page.title }}</title>
 
-<!-- Paged.js core (NOT the polyfill) -->
+<!-- Paged.js core (Previewer API) -->
 <script src="https://unpkg.com/pagedjs/dist/paged.js"></script>
 
 <style>
 /* ======================================================
-   SCREEN CANVAS
+   SCREEN CANVAS (no backgrounds on html/body!)
    ====================================================== */
-html {
-  background: #e0e0e0; /* visible contrast */
-}
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #e6e6e6;
 }
 
 /* ======================================================
@@ -51,21 +49,21 @@ body {
 }
 
 /* ======================================================
-   PREVIEW CONTAINER
+   PREVIEW CONTAINER (screen only)
    ====================================================== */
 #preview {
-  padding-top: 92px;   /* space for UI */
+  padding-top: 92px;
   padding-bottom: 56px;
 }
 
 /* ======================================================
-   PAGED PAGES (SCREEN PREVIEW)
+   PAGED PREVIEW STYLING
    ====================================================== */
 .pagedjs_page {
-  background: white;
   margin: 24px auto;
   box-shadow: 0 18px 45px rgba(0,0,0,0.35);
   border-radius: 6px;
+  background: white;
 }
 
 .pagedjs_pagebox {
@@ -73,15 +71,14 @@ body {
 }
 
 /* ======================================================
-   SOURCE CONTENT (HIDDEN BUT READABLE)
+   SOURCE CONTENT (VISIBLE FOR PRINT)
    ====================================================== */
 #source {
-  position: absolute;
-  left: -100000px;
-  top: 0;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+  max-width: 21cm;
+  margin: 3rem auto;
+  background: white;
+  padding: 2.5cm;
+  box-sizing: border-box;
 }
 
 /* ======================================================
@@ -92,20 +89,20 @@ body {
   margin: 2.5cm;
 }
 
+/* Print uses SOURCE, not preview */
 @media print {
-  html {
-    background: white;
-  }
-  .ui {
+  .ui,
+  #preview {
     display: none !important;
   }
-  #preview {
-    padding: 0;
+
+  body {
+    background: white;
   }
-  .pagedjs_page {
+
+  #source {
     margin: 0;
-    box-shadow: none;
-    border-radius: 0;
+    padding: 0;
   }
 }
 </style>
@@ -113,7 +110,7 @@ body {
 
 <body>
 
-<!-- UI CHROME -->
+<!-- UI -->
 <div class="ui">
   <strong>📄 Paged Preview</strong>
   <div>
@@ -122,32 +119,26 @@ body {
   </div>
 </div>
 
-<!-- PAGED OUTPUT -->
+<!-- PAGED PREVIEW (screen only) -->
 <div id="preview"></div>
 
-<!-- SOURCE CONTENT (Jekyll renders here ONCE) -->
+<!-- SOURCE CONTENT (used for print) -->
 <div id="source">
   {{ content }}
 </div>
 
 <script>
-/* ======================================================
-   AUTO PAGINATION (PREVIEWER API)
-   ====================================================== */
 (async function () {
   const source = document.getElementById("source");
   const preview = document.getElementById("preview");
 
   const previewer = new Paged.Previewer();
-
   await previewer.preview(source, [], preview);
 
   const pages = preview.querySelectorAll(".pagedjs_page").length;
-  const counter = document.getElementById("counter");
-  if (counter) counter.textContent = "Pages: " + pages;
+  document.getElementById("counter").textContent = "Pages: " + pages;
 })();
 </script>
 
 </body>
 </html>
-
