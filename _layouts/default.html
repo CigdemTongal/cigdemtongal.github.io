@@ -10,40 +10,57 @@
   <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
 
   <style>
-    /* ---------- Screen background ---------- */
+    /* ======================================================
+       SCREEN BACKGROUND
+       ====================================================== */
+
     body {
       margin: 0;
-      background: #777; /* contrast background */
+      background: #6f6f6f; /* clearly distinct background */
     }
 
-    /* ---------- Paged.js page styling (SCREEN) ---------- */
+    /* ======================================================
+       PAGED.JS PAGE PREVIEW (SCREEN)
+       ====================================================== */
+
     .pagedjs_page {
-      background: white;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      background: #ffffff;
       margin: 2rem auto;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
       border-radius: 3px;
     }
 
-    /* Optional: crisp page edge */
+    /* Ensure inner page box is white */
     .pagedjs_pagebox {
       background: white;
     }
 
-    /* ---------- Page size & margins ---------- */
+    /* Optional: slightly soften the page edges */
+    .pagedjs_pagebox {
+      box-sizing: border-box;
+    }
+
+    /* ======================================================
+       PAGE SIZE & MARGINS (PAGED + PRINT)
+       ====================================================== */
+
     @page {
       size: A4;
       margin: 2.5cm;
     }
 
-    /* ---------- Print cleanup ---------- */
+    /* ======================================================
+       PRINT CLEANUP (PDF OUTPUT)
+       ====================================================== */
+
     @media print {
       body {
         background: white;
       }
 
       .pagedjs_page {
-        box-shadow: none;
         margin: 0;
+        box-shadow: none;
         border-radius: 0;
       }
     }
@@ -51,7 +68,10 @@
 </head>
 
 <body>
+
   {{ content }}
+
 </body>
 </html>
+
 
