@@ -9,8 +9,42 @@
   <!-- Paged.js -->
   <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
 
+  <style>
+    body {
+      margin: 0;
+      background: #777; /* screen background */
+    }
+
+    main {
+      background: #fff;          /* "paper" */
+      width: 21cm;               /* A4 width */
+      min-height: 29.7cm;        /* A4 height (optional, helps visually) */
+      margin: 2rem auto;         /* center on screen */
+      padding: 2.5cm;            /* match your @page margin */
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      box-sizing: border-box;
+    }
+
+    /* Tell Paged.js / print what the page really is */
+    @page {
+      size: A4;
+      margin: 2.5cm;
+    }
+
+    /* Print should be clean (no grey background, no shadow) */
+    @media print {
+      body { background: #fff; }
+      main {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
 </head>
-<style>body {background-color:grey;</style>
+
 <body>
   <main>
     {{ content }}
