@@ -5,46 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }}</title>
 
-  <!-- Paged.js (stable, pinned) -->
+  <!-- Paged.js (safe to keep even if it doesn't paginate) -->
   <script src="https://unpkg.com/pagedjs@0.4.3/dist/paged.polyfill.js"></script>
 
   <style>
-    /* Print setup */
+    /* Print */
     @page {
       size: A4;
       margin: 2.5cm;
     }
 
-    /* Screen preview only */
+    /* =========================
+       SCREEN PREVIEW — FORCE IT
+       ========================= */
     @media screen {
 
-      /* Viewport background */
+      /* viewport */
       html {
-        background: #e6e6e6;
+        background: #dcdcdc;
       }
 
       body {
         margin: 0;
-        padding: 2rem 0;
+        padding: 3rem 0;
         background: transparent;
       }
 
-      /* Center paged output */
+      /* --------------------------------
+         CASE 1: PAGED.JS GENERATED PAGES
+         -------------------------------- */
       .pagedjs_pages {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2rem;
+        gap: 2.5rem;
       }
 
-      /*
-        THIS is the physical page.
-        Using outline so layout is not affected.
-      */
+      .pagedjs_page,
       .pagedjs_pagebox {
         background: #ffffff;
-        outline: 2px solid #000000;
-        outline-offset: -2px;
+        border: 3px solid red;   /* 🔥 IMPOSSIBLE TO MISS */
+      }
+
+      /* --------------------------------
+         CASE 2: PAGED.JS DID NOT RUN
+         Simulate A4 paper
+         -------------------------------- */
+      body > * {
+        max-width: 210mm;        /* A4 width */
+        margin: 0 auto 3rem;
+        padding: 2.5cm;
+        background: #ffffff;
+        border: 3px solid red;   /* same border */
+        box-sizing: border-box;
       }
     }
   </style>
