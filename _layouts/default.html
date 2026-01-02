@@ -6,6 +6,7 @@
 
 <title>{{ page.title }}</title>
 
+<!-- Paged.js AUTO polyfill (one and only paginator) -->
 <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
 
 <style>
@@ -44,12 +45,13 @@ body {
   cursor: pointer;
 }
 
-/* ================= PAGED PREVIEW ================= */
-#preview {
+/* Push pages below UI */
+.pagedjs_pages {
   padding-top: 92px;
   padding-bottom: 56px;
 }
 
+/* ================= PAGE PREVIEW ================= */
 .pagedjs_page {
   background: white;
   margin: 22px auto;
@@ -60,24 +62,16 @@ body {
   background: white;
 }
 
-/* ================= SOURCE CONTENT (HIDDEN SAFELY) ================= */
-#source {
-  position: absolute;
-  left: -99999px;
-  top: 0;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
 /* ================= PAGED / PRINT ================= */
 @page {
   size: A4;
   margin: 2.5cm;
 }
+
 @media print {
   .ui { display: none !important; }
   html { background: white; }
+  .pagedjs_pages { padding: 0; }
   .pagedjs_page {
     margin: 0;
     box-shadow: none;
@@ -89,37 +83,14 @@ body {
 
 <body>
 
-<!-- UI -->
+<!-- UI (not paginated, survives) -->
 <div class="ui">
   <strong>📄 Paged Preview</strong>
-  <div>
-    <span id="counter">Pages: …</span>
-    <button onclick="window.print()">Print</button>
-  </div>
+  <button onclick="window.print()">Print</button>
 </div>
 
-<!-- PAGED OUTPUT GOES HERE -->
-<div id="preview"></div>
-
-<!-- SOURCE CONTENT (Jekyll renders here ONCE) -->
-<div id="source">
-  {{ content }}
-</div>
-
-<script>
-(function () {
-  const source = document.getElementById("source");
-  const preview = document.getElementById("preview");
-
-  const previewer = new Paged.Previewer();
-
-  previewer.preview(source, [], preview).then(() => {
-    const pages = preview.querySelectorAll(".pagedjs_page").length;
-    const counter = document.getElementById("counter");
-    if (counter) counter.textContent = "Pages: " + pages;
-  });
-})();
-</script>
+<!-- DOCUMENT CONTENT (Paged.js paginates THIS automatically) -->
+{{ content }}
 
 </body>
 </html>
