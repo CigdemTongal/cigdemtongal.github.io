@@ -5,14 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }}</title>
 
-  <!-- Paged.js auto mode -->
-  <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+  <!-- Paged.js (pinned stable version) -->
+  <script src="https://unpkg.com/pagedjs@0.4.3/dist/paged.polyfill.js"></script>
 
   <style>
-    /* Paged (print + preview) */
+    /* Print definition */
     @page {
       size: A4;
       margin: 2.5cm;
+    }
+
+    /* Screen preview ONLY */
+    @media screen {
+
+      html {
+        background: #f0f0f0;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .pagedjs_page {
+        background: white;
+        margin: 1.5rem auto;
+        box-shadow: 0 0 0 1px #ddd;
+      }
+
     }
   </style>
 </head>
