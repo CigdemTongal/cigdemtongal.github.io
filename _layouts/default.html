@@ -1,133 +1,261 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>{{ page.title }}</title>
+  <title>{{ page.title }}</title>
 
-<script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+  <!-- Paged.js -->
+  <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
 
-<style>
-/* ======================================================
-   SCREEN CANVAS — MUST TARGET html, NOT body
-   ====================================================== */
-html {
-  background: #007ea7;
-}
+  <!-- Screen-only UI styles: keep separate and mark as screen -->
+  <style media="screen">
+    :root{
+      --red:#ff3e41;
+      --orange:#ff8a43;
+      --yellow:#ffeb7f;
+      --mint:#00c9a7;
+      --blue:#007ea7;
+      --ink:#0c1b22;
+      --canvas: linear-gradient(135deg, rgba(255,235,127,0.85), rgba(0,201,167,0.70));
+    }
 
-/* Paged.js forces body white — accept it */
-body {
-  margin: 0;
-}
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--canvas);
+      overflow-y: auto;
+    }
 
-/* ======================================================
-   FIXED UI OVERLAY (SAFE FROM PAGED.JS)
-   ====================================================== */
-.ui {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 56px;
-  background: linear-gradient(90deg, #ff3e41, #ff8a43);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.25rem;
-  z-index: 9999;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-}
+    /* Fixed UI chrome (never paginated) */
+    .ui{
+      position: fixed;
+      left: 16px;
+      right: 16px;
+      top: 14px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      border-radius: 16px;
+      background: linear-gradient(90deg, var(--blue), var(--mint));
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+      z-index: 9999;
+      user-select: none;
+    }
 
-.ui button {
-  background: rgba(255,255,255,0.2);
-  border: none;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 999px;
-  cursor: pointer;
-}
+    .ui .left{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      font-weight:650;
+      letter-spacing: .2px;
+    }
 
-/* ======================================================
-   PAGED.JS PAGES CONTAINER (THIS IS THE KEY)
-   ====================================================== */
-.pagedjs_pages {
-  padding-top: 80px;   /* push pages below UI */
-  padding-bottom: 3rem;
-  background: transparent;
-}
+    .badge{
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      white-space: nowrap;
+    }
 
-/* ======================================================
-   PAGE PREVIEW (SCREEN ONLY)
-   ====================================================== */
-.pagedjs_page {
-  background: white;
-  margin: 2rem auto;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-  border-radius: 4px;
-}
+    .ui .right{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
 
-.pagedjs_pagebox {
-  background: white;
-}
+    .btn{
+      border: 0;
+      cursor: pointer;
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: #fff;
+      background: rgba(255,255,255,0.18);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18);
+      transition: transform .08s ease, background .15s ease;
+    }
+    .btn:hover{ background: rgba(255,255,255,0.28); }
+    .btn:active{ transform: translateY(1px); }
 
-/* ======================================================
-   PRINT RULES (PAGED.JS USES THESE)
-   ====================================================== */
-@page {
-  size: A4;
-  margin: 2.5cm;
-}
+    .btn.primary{
+      background: linear-gradient(90deg, var(--red), var(--orange));
+      box-shadow: 0 10px 20px rgba(255,62,65,0.18);
+    }
+    .btn.primary:hover{ filter: saturate(1.05); }
 
-@media print {
-  html {
-    background: white;
-  }
+    /* Preview area (pages get appended here) */
+    #preview{
+      padding-top: 92px; /* space for chrome */
+      padding-bottom: 56px;
+      min-height: 100%;
+    }
 
-  .ui {
-    display: none !important;
-  }
+    /* Paper pages created by Paged.js */
+    .pagedjs_page{
+      background: #fff;
+      margin: 22px auto;
+      border-radius: 10px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.28);
+      overflow: hidden;
+    }
 
-  .pagedjs_pages {
-    padding: 0;
-  }
+    /* Nice “page edge” hint */
+    .pagedjs_page::before{
+      content:"";
+      display:block;
+      height: 10px;
+      background: linear-gradient(90deg, var(--yellow), rgba(255,235,127,0), rgba(0,201,167,0), var(--mint));
+      opacity: .55;
+    }
 
-  .pagedjs_page {
-    margin: 0;
-    box-shadow: none;
-    border-radius: 0;
-  }
-}
-</style>
+    /* Modal */
+    .modal{
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      background: rgba(12,27,34,0.55);
+      padding: 18px;
+    }
+    .modal .card{
+      width: min(520px, 100%);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+      border-top: 8px solid var(--orange);
+      padding: 18px 18px 14px;
+    }
+    .modal h3{
+      margin: 0 0 6px;
+      color: var(--blue);
+      font-size: 18px;
+    }
+    .modal p{
+      margin: 8px 0;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    .modal code{
+      background: rgba(0,126,167,0.08);
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+    }
+    .modal .row{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .modal .close{
+      background: linear-gradient(90deg, var(--mint), var(--blue));
+    }
+
+    /* Hide the source content container after pagination */
+    #source{
+      display:none;
+    }
+  </style>
+
+  <!-- Print rules (Paged.js uses @page) -->
+  <style>
+    @page{
+      size: A4;
+      margin: 2.5cm;
+    }
+
+    /* Print: remove any shadows if they survive */
+    @media print{
+      .pagedjs_page{ box-shadow: none !important; border-radius: 0 !important; margin: 0 !important; }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- FIXED UI (OUTSIDE DOCUMENT FLOW) -->
-<div class="ui">
-  <strong>📄 Paged Preview</strong>
-  <div>
-    <span id="counter">Pages: …</span>
-    <button onclick="window.print()">Print</button>
+  <!-- SCREEN-ONLY UI (not paginated) -->
+  <div class="ui" aria-hidden="true">
+    <div class="left">
+      <div class="badge">📄 Paged Preview</div>
+      <div class="badge" id="counter">Pages: …</div>
+    </div>
+    <div class="right">
+      <button class="btn" type="button" onclick="openInfo()">ℹ️ Info</button>
+      <button class="btn primary" type="button" onclick="window.print()">Print</button>
+    </div>
   </div>
-</div>
 
-<!-- DOCUMENT CONTENT -->
-{{ content }}
+  <!-- Paged.js will render pages into THIS container -->
+  <div id="preview"></div>
 
-<script>
-/* ======================================================
-   PAGED.JS LIFECYCLE HOOK — SAFE
-   ====================================================== */
-class Counter extends Paged.Handler {
-  afterRendered(pages) {
-    const el = document.getElementById("counter");
-    if (el) el.textContent = "Pages: " + pages.length;
-  }
-}
-Paged.registerHandlers(Counter);
-</script>
+  <!-- Source content: Paged.js paginates THIS, then we keep it hidden -->
+  <div id="source">
+    {{ content }}
+  </div>
+
+  <!-- Info modal (screen only) -->
+  <div class="modal" id="infoModal" role="dialog" aria-modal="true" aria-label="Print help">
+    <div class="card">
+      <h3>Perfect PDFs in Chrome ✨</h3>
+      <p>Use <strong>Google Chrome</strong> (it’s the most predictable for paged media).</p>
+      <p>
+        Print settings:
+        <br>• Paper size: <strong>A4</strong>
+        <br>• Scale: <strong>100%</strong>
+        <br>• Margins: <strong>None</strong>
+        <br>• Background graphics: <strong>On</strong>
+        <br>• Headers &amp; footers: <strong>Off</strong>
+      </p>
+      <p><em>Paged.js already paginated the document — don’t let the browser “help.” 😉</em></p>
+      <div class="row">
+        <button class="btn close" type="button" onclick="closeInfo()">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openInfo(){ document.getElementById("infoModal").style.display = "flex"; }
+    function closeInfo(){ document.getElementById("infoModal").style.display = "none"; }
+
+    // Proper method: paginate ONLY #source into #preview using the Previewer API.
+    (function initPagedPreview(){
+      const src = document.getElementById("source");
+      const out = document.getElementById("preview");
+
+      // If Paged isn't ready for any reason, fail gracefully.
+      if (!window.Paged || !Paged.Previewer) {
+        out.innerHTML = "<div style='padding:120px 20px;max-width:680px;margin:0 auto;color:#06222c;'><strong>Paged.js not available.</strong></div>";
+        return;
+      }
+
+      const previewer = new Paged.Previewer();
+
+      // preview(content, stylesheetsArray, renderTo)
+      // stylesheetsArray can be empty because we're already in the document.
+      previewer.preview(src, [], out).then((flow) => {
+        // flow.total is sometimes available; safest is to count generated pages:
+        const pages = out.querySelectorAll(".pagedjs_page").length;
+        const el = document.getElementById("counter");
+        if (el) el.textContent = "Pages: " + pages;
+      });
+    })();
+  </script>
 
 </body>
 </html>
+
