@@ -1,75 +1,36 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title }}</title>
+<style>
+  @page {
+    size: A4;
+    margin: 2.5cm;
+  }
 
-  <script src="https://unpkg.com/pagedjs@0.4.3/dist/paged.polyfill.js"></script>
+  /* SCREEN PREVIEW ONLY */
+  @media screen {
 
-  <style>
-    @page {
-      size: A4;
-      margin: 2.5cm;
+    /* darken viewport */
+    html {
+      background: #e6e6e6;
     }
 
-    /* --- Screen-only preview styling --- */
-    @media screen {
-      html {
-        background: #f2f2f2;          /* viewport background */
-      }
-
-      body {
-        margin: 0;
-        padding: 2rem 0;              /* space around pages */
-        background: transparent;       /* let html show through */
-      }
-
-      /* If Paged.js has generated pages, style them */
-      .pagedjs_pages {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-      }
-
-      .pagedjs_page {
-        background: #fff;
-        box-shadow: 0 0 0 1px #ddd, 0 10px 30px rgba(0,0,0,0.08);
-      }
-
-      /*
-        Fallback: If pages are NOT generated (still raw flow),
-        center a readable column so you can at least distinguish it from background.
-      */
-      body:not(.pagedjs_pages) {
-        max-width: 900px;
-        margin: 0 auto;
-        background: #fff;
-        box-shadow: 0 0 0 1px #ddd, 0 10px 30px rgba(0,0,0,0.08);
-        padding: 2.5rem;
-      }
+    body {
+      margin: 0;
+      padding: 2rem 0;
+      background: transparent;
     }
 
-    /* --- Optional: avoid flash of unpaged content (FOUC) --- */
-    @media screen {
-      body { visibility: hidden; }
-      body.pagedjs_pages { visibility: visible; }
+    /* center pages */
+    .pagedjs_pages {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
     }
 
-    @media print {
-      body { visibility: visible !important; }
+    /* THIS is the actual page */
+    .pagedjs_pagebox {
+      background: white;
+      outline: 2px solid #000;     /* HARD border, unmistakable */
+      outline-offset: -2px;
     }
-  </style>
-</head>
-<body>
-  {{ content }}
-
-  <script>
-    // Optional: ensure we show content even if pagination doesn't happen for some reason
-    window.addEventListener("load", () => {
-      setTimeout(() => { document.body.style.visibility = "visible"; }, 1500);
-    });
-  </script>
-</body>
-</html>
+  }
+</style>
