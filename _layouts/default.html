@@ -1,148 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }}</title>
 
-<title>{{ page.title }}</title>
+  <!-- Paged.js auto mode -->
+  <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
 
-<!-- Paged.js core (Previewer API) -->
-<script src="https://unpkg.com/pagedjs/dist/paged.js"></script>
-
-<style>
-/* ======================================================
-   SCREEN CANVAS
-   ====================================================== */
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: #e6e6e6;
-}
-
-/* ======================================================
-   UI CHROME (SCREEN ONLY)
-   ====================================================== */
-.ui {
-  position: fixed;
-  top: 14px;
-  left: 16px;
-  right: 16px;
-  height: 56px;
-  background: linear-gradient(90deg, #ff3e41, #ff8a43);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 14px;
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-  z-index: 9999;
-}
-
-.ui button {
-  background: rgba(255,255,255,0.25);
-  border: none;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-/* ======================================================
-   PAGED PREVIEW (SCREEN)
-   ====================================================== */
-#preview {
-  padding-top: 92px;
-  padding-bottom: 56px;
-}
-
-.pagedjs_page,
-.pagedjs_pagebox,
-.pagedjs_area {
-  background: white !important; /* kill background bleed */
-}
-
-.pagedjs_page {
-  margin: 24px auto;
-  box-shadow: 0 18px 45px rgba(0,0,0,0.35);
-  border-radius: 6px;
-}
-
-/* ======================================================
-   SOURCE (LAYOUT-VISIBLE, VISUALLY HIDDEN)
-   ====================================================== */
-#source {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 21cm;
-  padding: 2.5cm;
-  box-sizing: border-box;
-
-  visibility: hidden;     /* key */
-  pointer-events: none;   /* key */
-}
-
-/* ======================================================
-   PAGED / PRINT RULES
-   ====================================================== */
-@page {
-  size: A4;
-  margin: 2.5cm;
-}
-
-@media print {
-  body {
-    background: white;
-  }
-
-  .ui,
-  #preview {
-    display: none !important;
-  }
-
-  #source {
-    position: static;
-    visibility: visible;
-    pointer-events: auto;
-    width: auto;
-    padding: 0;
-  }
-}
-</style>
+  <style>
+    /* Paged (print + preview) */
+    @page {
+      size: A4;
+      margin: 2.5cm;
+    }
+  </style>
 </head>
-
 <body>
-
-<!-- UI -->
-<div class="ui">
-  <strong>📄 Paged Preview</strong>
-  <div>
-    <span id="counter">Pages: …</span>
-    <button onclick="window.print()">Print</button>
-  </div>
-</div>
-
-<!-- PAGED PREVIEW -->
-<div id="preview"></div>
-
-<!-- SOURCE CONTENT -->
-<div id="source">
   {{ content }}
-</div>
-
-<script>
-(async function () {
-  const source = document.getElementById("source");
-  const preview = document.getElementById("preview");
-
-  const previewer = new Paged.Previewer();
-  await previewer.preview(source, [], preview);
-
-  const pages = preview.querySelectorAll(".pagedjs_page").length;
-  document.getElementById("counter").textContent = "Pages: " + pages;
-})();
-</script>
-
 </body>
 </html>
