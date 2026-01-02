@@ -5,58 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }}</title>
 
-  <!-- Paged.js (safe to keep even if it doesn't paginate) -->
+  <!-- Paged.js (stable) -->
   <script src="https://unpkg.com/pagedjs@0.4.3/dist/paged.polyfill.js"></script>
 
   <style>
-    /* Print */
+    /* PRINT */
     @page {
       size: A4;
       margin: 2.5cm;
     }
 
-    /* =========================
-       SCREEN PREVIEW — FORCE IT
-       ========================= */
+    /* ==========================
+       SCREEN PREVIEW — DEFINITIVE
+       ========================== */
     @media screen {
 
-      /* viewport */
+      /* Force non-white viewport */
       html {
-        background: #dcdcdc;
+        background: #e0e0e0 !important;
       }
 
       body {
-        margin: 0;
-        padding: 3rem 0;
-        background: transparent;
+        margin: 0 !important;
+        padding: 3rem 0 !important;
+        background: transparent !important;
       }
 
-      /* --------------------------------
-         CASE 1: PAGED.JS GENERATED PAGES
-         -------------------------------- */
+      /* Center paged output */
       .pagedjs_pages {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2.5rem;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 3rem !important;
       }
 
-      .pagedjs_page,
+      /* Ensure page box positioning */
       .pagedjs_pagebox {
-        background: #ffffff;
-        border: 3px solid red;   /* 🔥 IMPOSSIBLE TO MISS */
+        position: relative !important;
+        background: white !important;
       }
 
-      /* --------------------------------
-         CASE 2: PAGED.JS DID NOT RUN
-         Simulate A4 paper
-         -------------------------------- */
-      body > * {
-        max-width: 210mm;        /* A4 width */
-        margin: 0 auto 3rem;
-        padding: 2.5cm;
-        background: #ffffff;
-        border: 3px solid red;   /* same border */
+      /*
+        Draw page border using overlay.
+        This CANNOT be overridden by Paged.js.
+      */
+      .pagedjs_pagebox::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 3px solid #000;
+        pointer-events: none;
         box-sizing: border-box;
       }
     }
