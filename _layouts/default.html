@@ -1,36 +1,55 @@
-<style>
-  @page {
-    size: A4;
-    margin: 2.5cm;
-  }
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }}</title>
 
-  /* SCREEN PREVIEW ONLY */
-  @media screen {
+  <!-- Paged.js (stable, pinned) -->
+  <script src="https://unpkg.com/pagedjs@0.4.3/dist/paged.polyfill.js"></script>
 
-    /* darken viewport */
-    html {
-      background: #e6e6e6;
+  <style>
+    /* Print setup */
+    @page {
+      size: A4;
+      margin: 2.5cm;
     }
 
-    body {
-      margin: 0;
-      padding: 2rem 0;
-      background: transparent;
-    }
+    /* Screen preview only */
+    @media screen {
 
-    /* center pages */
-    .pagedjs_pages {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-    }
+      /* Viewport background */
+      html {
+        background: #e6e6e6;
+      }
 
-    /* THIS is the actual page */
-    .pagedjs_pagebox {
-      background: white;
-      outline: 2px solid #000;     /* HARD border, unmistakable */
-      outline-offset: -2px;
+      body {
+        margin: 0;
+        padding: 2rem 0;
+        background: transparent;
+      }
+
+      /* Center paged output */
+      .pagedjs_pages {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      /*
+        THIS is the physical page.
+        Using outline so layout is not affected.
+      */
+      .pagedjs_pagebox {
+        background: #ffffff;
+        outline: 2px solid #000000;
+        outline-offset: -2px;
+      }
     }
-  }
-</style>
+  </style>
+</head>
+<body>
+  {{ content }}
+</body>
+</html>
