@@ -7,8 +7,10 @@
 
   <!-- Paged.js (stable) -->
   <script src="https://unpkg.com/pagedjs@0.4.3/dist/paged.polyfill.js"></script>
-
-  <style>
+</head>
+<body>
+  {{ content }}
+    <style>
     /* PRINT */
     @page {
       size: A4;
@@ -59,8 +61,5 @@
       }
     }
   </style>
-</head>
-<body>
-  {{ content }}
 </body>
 </html>
