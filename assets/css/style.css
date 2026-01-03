@@ -12,9 +12,8 @@ body {
   padding: 3rem 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont,
                "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-  color: #222;
-  background: transparent;
+  line-height: 1.5;
+  color: #333;
 }
 
 /* =====================
@@ -49,7 +48,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    border: 2px solid #000;
+    border: 2px solid #333;
     pointer-events: none;
     box-sizing: border-box;
   }
@@ -66,21 +65,4 @@ h1, h2, h3 {
 
 p {
   margin: 0.8em 0;
-}
-
-pre, code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
-               Consolas, "Liberation Mono", monospace;
-  background: #f6f8fa;
-}
-
-pre {
-  padding: 1em;
-  overflow-x: auto;
-  border-radius: 4px;
-}
-
-code {
-  padding: 0.15em 0.3em;
-  border-radius: 3px;
 }
