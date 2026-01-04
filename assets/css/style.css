@@ -1,3 +1,54 @@
-/* =========================
+ <style>
+    /* =========================
    SCREEN PREVIEW (ONLY AFTER PAGINATION)
    ========================= */
+
+@media screen {
+
+  /* Apply preview UI ONLY when paged.js is active */
+  body.pagedjs_pages {
+    background: #d9d9d9;              /* grey viewport */
+    margin: 0;
+    padding: 3rem 0;
+  }
+
+  /* Page stack */
+  body.pagedjs_pages .pagedjs_pages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;              /* ✅ center pages */
+    gap: 3rem;
+  }
+
+  /* Individual page wrapper */
+  body.pagedjs_pages .pagedjs_page {
+    background: transparent;
+  }
+
+  /* ACTUAL A4 PAPER */
+  body.pagedjs_pages .pagedjs_pagebox {
+    background: #ffffff;              /* ✅ white page */
+    position: relative;
+  }
+
+  /* Visible page border (layout-safe) */
+  body.pagedjs_pages .pagedjs_pagebox::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid #000;            /* unmistakable border */
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+}
+
+/* =========================
+   PRINT (CLEAN)
+   ========================= */
+
+@page {
+  size: A4;
+  margin: 2.5cm;
+}
+
+  </style>
