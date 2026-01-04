@@ -1,48 +1,45 @@
 /* =========================
-   SCREEN PREVIEW (ONLY AFTER PAGINATION)
+   SCREEN PREVIEW (PAGED.JS)
    ========================= */
 
 @media screen {
 
-  /* Apply preview UI ONLY when paged.js is active */
-  body.pagedjs_pages {
-    background: #d9d9d9;              /* grey viewport */
-    margin: 0;
-    padding: 3rem 0;
+  /* 1️⃣ Grey background outside pages */
+  html {
+    background: #d0d0d0;
   }
 
-  /* Page stack */
-  body.pagedjs_pages .pagedjs_pages {
-    display: flex;
+  /* 2️⃣ BODY becomes the page stack */
+  body.pagedjs_pages {
+    margin: 0;
+    padding: 3rem 0;
+    background: transparent;
+
+    display: flex;                 /* 🔑 THIS WAS MISSING */
     flex-direction: column;
-    align-items: center;              /* ✅ center pages */
+    align-items: center;           /* 🔑 center pages */
     gap: 3rem;
   }
 
-  /* Individual page wrapper */
-  body.pagedjs_pages .pagedjs_page {
-    background: transparent;
-  }
-
-  /* ACTUAL A4 PAPER */
-  body.pagedjs_pages .pagedjs_pagebox {
-    background: #ffffff;              /* ✅ white page */
+  /* 3️⃣ Each page (visual unit) */
+  body.pagedjs_pages > .pagedjs_page {
+    background: #ffffff;           /* white paper */
     position: relative;
   }
 
-  /* Visible page border (layout-safe) */
-  body.pagedjs_pages .pagedjs_pagebox::after {
+  /* 4️⃣ Visible page border */
+  body.pagedjs_pages > .pagedjs_page::after {
     content: "";
     position: absolute;
     inset: 0;
-    border: 2px solid #000;            /* unmistakable border */
+    border: 2px solid #000;
     box-sizing: border-box;
     pointer-events: none;
   }
 }
 
 /* =========================
-   PRINT (CLEAN)
+   PRINT (CLEAN OUTPUT)
    ========================= */
 
 @page {
