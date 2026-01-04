@@ -10,19 +10,7 @@ html {
 body {
   margin: 0;
   padding: 3rem 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont,
-               "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  color: #333;
-}
-
-/* =====================
-   PAGED MEDIA (PRINT)
-   ===================== */
-
-@page {
-  size: A4;
-  margin: 2.5cm;
 }
 
 /* =====================
@@ -52,6 +40,15 @@ body {
     pointer-events: none;
     box-sizing: border-box;
   }
+}
+
+/* =====================
+   PAGED MEDIA (PRINT)
+   ===================== */
+
+@page {
+  size: A4;
+  margin: 2.5cm;
 }
 
 /* =====================
