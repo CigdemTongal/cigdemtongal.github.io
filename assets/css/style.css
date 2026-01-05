@@ -1,58 +1,32 @@
 /* =========================
-   SCREEN PREVIEW (PAGED.JS)
+   SCREEN PREVIEW
    ========================= */
 
 @media screen {
 
-  /* ---- OUTER VIEWPORT ---- */
+  /* Grey viewport */
   html {
-    background: #bfbfbf;
+    background: #cfcfcf !important;
   }
 
   body {
-    margin: 0;
-    padding: 2rem;
-    background: transparent;
+    margin: 0 !important;
+    padding: 3rem 0 !important;
+    background: transparent !important;
   }
 
-  /* ---- PAGED.JS IFRAME ---- */
-  iframe.pagedjs_pages {
-    display: block;
-    margin: 0 auto;
-    background: #bfbfbf;           /* grey outside pages */
-    border: none;
+  /* Page stack */
+  body.pagedjs_pages {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;   /* CENTER PAGES */
+    gap: 3rem !important;
   }
 
-  /* ---- INSIDE THE IFRAME ---- */
-  iframe.pagedjs_pages html {
-    background: transparent;
-  }
-
-  iframe.pagedjs_pages body {
-    margin: 0;
-    padding: 3rem 0;
-    background: transparent;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;           /* center pages */
-    gap: 3rem;
-  }
-
-  /* ---- ACTUAL A4 PAGES ---- */
-  iframe.pagedjs_pages .pagedjs_page {
-    background: #ffffff;           /* white paper */
-    position: relative;
-  }
-
-  /* ---- PAGE BORDERS ---- */
-  iframe.pagedjs_pages .pagedjs_page::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 2px solid #000;
-    box-sizing: border-box;
-    pointer-events: none;
+  /* ACTUAL PAGES */
+  .pagedjs_page {
+    background: #ffffff !important;   /* WHITE PAPER */
+    box-shadow: 0 0 0 2px #000000 !important; /* VISIBLE BORDER */
   }
 }
 
