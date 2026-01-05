@@ -39,7 +39,7 @@
         display: block;
       }
 
-      /* Each page (SCALED) */
+      /* Each page (SCALED FOR ~1.25 PAGES) */
       .pagedjs_page {
         background: #ffffff;
         position: relative;
@@ -48,11 +48,11 @@
         margin-left: auto;
         margin-right: auto;
 
-        /* vertical spacing (adjusted for scale) */
-        margin-bottom: 2rem;
+        /* vertical spacing (tuned for scale) */
+        margin-bottom: 1.5rem;
 
         /* ✅ SCALE PREVIEW */
-        transform: scale(0.85);
+        transform: scale(0.75);
         transform-origin: top center;
       }
 
@@ -69,3 +69,12 @@
 
     /* =========================
        PRINT
+       ========================= */
+    @page {
+      size: A4;
+      margin: 2.5cm;
+    }
+  </style>
+
+</body>
+</html>
