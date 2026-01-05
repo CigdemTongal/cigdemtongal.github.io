@@ -30,7 +30,7 @@
 
       body {
         margin: 0;
-        padding: 3rem 0;
+        padding: 2rem 0;
         background: transparent;
       }
 
@@ -39,17 +39,21 @@
         display: block;
       }
 
-      /* Each page */
+      /* Each page (SCALED) */
       .pagedjs_page {
         background: #ffffff;
         position: relative;
 
-        /* horizontal centering */
+        /* center horizontally */
         margin-left: auto;
         margin-right: auto;
 
-        /* ✅ vertical spacing */
-        margin-bottom: 3rem;
+        /* vertical spacing (adjusted for scale) */
+        margin-bottom: 2rem;
+
+        /* ✅ SCALE PREVIEW */
+        transform: scale(0.85);
+        transform-origin: top center;
       }
 
       /* Visible page border */
@@ -65,12 +69,3 @@
 
     /* =========================
        PRINT
-       ========================= */
-    @page {
-      size: A4;
-      margin: 2.5cm;
-    }
-  </style>
-
-</body>
-</html>
