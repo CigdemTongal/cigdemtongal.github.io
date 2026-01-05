@@ -1,48 +1,19 @@
-/* =========================
-   SCREEN PREVIEW (PAGED.JS)
-   ========================= */
-
 @media screen {
 
-  /* 1️⃣ Grey background outside pages */
   html {
-    background: #d0d0d0;
+    background: #bfbfbf !important;
   }
 
-  /* 2️⃣ BODY becomes the page stack */
-  body.pagedjs_pages {
-    margin: 0;
-    padding: 3rem 0;
-    background: transparent;
-
-    display: flex;                 /* 🔑 THIS WAS MISSING */
-    flex-direction: column;
-    align-items: center;           /* 🔑 center pages */
-    gap: 3rem;
+  body {
+    margin: 0 !important;
+    padding: 4rem 0 !important;
+    background: transparent !important;
   }
-
-  /* 3️⃣ Each page (visual unit) */
-  body.pagedjs_pages > .pagedjs_page {
-    background: #ffffff;           /* white paper */
-    position: relative;
+   
+  .pagedjs_page {
+    background: #ffffff !important;
+    margin: 0 auto 4rem !important;
+    border: 10px solid red !important;
+    box-shadow: 0 0 0 10px blue !important;
   }
-
-  /* 4️⃣ Visible page border */
-  body.pagedjs_pages > .pagedjs_page::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 2px solid #000;
-    box-sizing: border-box;
-    pointer-events: none;
-  }
-}
-
-/* =========================
-   PRINT (CLEAN OUTPUT)
-   ========================= */
-
-@page {
-  size: A4;
-  margin: 2.5cm;
 }
