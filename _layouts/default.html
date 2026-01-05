@@ -34,19 +34,22 @@
         background: transparent;
       }
 
-      /* Paged.js turns BODY into the page stack */
+      /* Page stack */
       body.pagedjs_pages {
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
+        display: block;
       }
 
-      /* Each page (CENTERED FIX) */
+      /* Each page */
       .pagedjs_page {
-        background: #ffffff;      /* white A4 paper */
+        background: #ffffff;
         position: relative;
-        margin-left: auto;        /* ✅ center horizontally */
-        margin-right: auto;       /* ✅ center horizontally */
+
+        /* horizontal centering */
+        margin-left: auto;
+        margin-right: auto;
+
+        /* ✅ vertical spacing */
+        margin-bottom: 3rem;
       }
 
       /* Visible page border */
